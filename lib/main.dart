@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         LoginScreen.routeName:(_)=> const LoginScreen(),
-        RegisterScreen.routeName:(_)=>const RegisterScreen(),
+        RegisterScreen.routeName:(_)=> RegisterScreen(),
         ForgetPassword.routeName:(_)=>const ForgetPassword(),
         HomeScreen.routeName:(_)=>HomeScreen(),
       },

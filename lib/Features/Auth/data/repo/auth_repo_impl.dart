@@ -19,4 +19,15 @@ class AuthRepoImpl implements AuthRepo{
      throw Exception('Failed to login'); // Handle error appropriately
    }
   }
+
+  @override
+  Future<LoginModel> userRegister(RegisterParameters parameters)async{
+    final response = await apiService.post("Account/register", parameters.data);
+    if(response.statusCode ==200){
+      final loginModel = LoginModel.fromJson(response.data);
+      return loginModel;
+    }else{
+      throw Exception('Failed to login'); // Handle error appropriately
+    }
+  }
 }
