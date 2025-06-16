@@ -14,6 +14,7 @@ import '../../../../Core/utilis/app_color.dart';
 import '../../../../Core/utilis/error_dialog.dart';
 import '../../../../Core/utilis/loading_dialog.dart';
 import '../../../../Core/utilis/success_dialog.dart';
+import 'forget_password.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                   CustomTextButton(text: "Forget Password ?", onTab: ()
                                   {
-                                    // Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
+                                    Navigator.pushNamed(context, ForgetPassword.routeName);
                                   },)
                                 ],
                               ),
