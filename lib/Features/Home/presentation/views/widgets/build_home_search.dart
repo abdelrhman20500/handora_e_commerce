@@ -30,7 +30,7 @@ class BuildHomeSearch extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.notifications, color: Colors.black, size: 32),
+            icon: const Icon(Icons.shopping_cart, color: Colors.black, size: 32),
           ),
         ),
       ],
