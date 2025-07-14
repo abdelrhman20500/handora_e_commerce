@@ -30,6 +30,7 @@ class CategoryProductComponent extends StatelessWidget {
                   : '',
               id: model[index].id,
               name: model[index].name,
+
               isFavorite: model[index].isFavorite,
               description: model[index].description,
               price: model[index].sellingPrice,

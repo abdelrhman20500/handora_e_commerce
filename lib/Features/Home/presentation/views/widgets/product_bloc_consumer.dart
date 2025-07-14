@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handora_e_commerce/Core/function/api_service.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/data/data_source/home_remote_data_source.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/data/repo/home_repo_impl.dart';
+import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/add_to_fav_use_case.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/product_use_case.dart';
+import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/remove_fav_use_case.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/presentation/view_manger/product_cubit/product_cubit.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/presentation/view_manger/product_cubit/product_state.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/widgets/product_component.dart';
@@ -15,8 +17,13 @@ class ProductBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubit(ProductUseCase(HomeRepoImpl(
+      create: (context) => ProductCubit(
+        ProductUseCase(HomeRepoImpl(
           homeBaseRemoteDataSource:HomeRemoteDataSource(ApiService(Dio(),),),),),
+        AddToFavUseCase(HomeRepoImpl(homeBaseRemoteDataSource:
+        HomeRemoteDataSource(ApiService(Dio(),),),),),
+        RemoveFavUseCase(HomeRepoImpl(homeBaseRemoteDataSource:
+        HomeRemoteDataSource(ApiService(Dio(),),),),)
       )..productDate(),
       child: BlocConsumer<ProductCubit,ProductState>(
           listener: (context, state) {},

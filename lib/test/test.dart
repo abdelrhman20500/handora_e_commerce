@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:handora_e_commerce/Core/function/api_service.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/data/data_source/home_remote_data_source.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/data/repo/home_repo_impl.dart';
+import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/add_to_fav_use_case.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/category_product_use_case.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/category_use_case.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/product_details_use_case.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/domain/use_case/product_use_case.dart';
+import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/presentation/view_manger/add_or_remove_cubit/add_fav_cubit.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/presentation/view_manger/category_cubit/category_cubit.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/presentation/view_manger/category_product_cubit/category_product_cubit.dart';
 import 'package:handora_e_commerce/Features/Home/presentation/views/tabs/home_tab/presentation/view_manger/product_cubit/product_cubit.dart';
@@ -26,7 +28,7 @@ class _TestState extends State<Test> {
   @override
   void initState() {
     super.initState();
-    getData();
+    // getData();
   }
 
   @override
@@ -34,8 +36,8 @@ class _TestState extends State<Test> {
     return const Scaffold();
   }
 
-  void getData()async{
-    var result=ProductDetailsCubit(ProductDetailsUseCase(HomeRepoImpl(homeBaseRemoteDataSource: 
-    HomeRemoteDataSource(ApiService(Dio(),),),),),)..productDetailsDate(id: 26);
-  }
+  // void getData()async{
+  //   var result=AddFavCubit(AddToFavUseCase(HomeRepoImpl(homeBaseRemoteDataSource:
+  //   HomeRemoteDataSource(ApiService(Dio(),),),),),)..addToFavorite(id: 27);
+  // }
 }

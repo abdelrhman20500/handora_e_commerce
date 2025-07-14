@@ -18,16 +18,32 @@ class ApiService{
 
     return response;
   }
+
+  /// post fav
+  Future<Response> postFav({required String endPoint,required String token}) async {
+    var response = await dio.post(
+      "$baseUrl$endPoint",
+      // data: data,
+      options: Options(headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      }),
+    );
+
+    return response;
+  }
  
   /// delete method
-  Future<Response> delete(String endPoint, Map<String, dynamic> data,
-      {String? token}) async {
-    var response = await dio.delete(endPoint,
-        data: data,
-        options: Options(headers: {
+  Future<Response> delete({required String endPoint,required String token,}) async {
+    final response = await dio.delete(
+      "$baseUrl$endPoint", // this must be a full URL
+      options: Options(
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
-        }));
+        },
+      ),
+    );
     return response;
   }
 
@@ -37,9 +53,8 @@ class ApiService{
         options:Options(headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
-        }));
-    // print("Response Status: ${response.statusCode}");
-    // print("Response Data: ${response.data}");
+        }),
+    );
     return response;
   }
 
