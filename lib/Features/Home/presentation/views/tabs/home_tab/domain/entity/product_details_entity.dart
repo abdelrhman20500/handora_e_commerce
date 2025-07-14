@@ -1,36 +1,32 @@
 import 'package:equatable/equatable.dart';
 
-class ProductEntity extends Equatable {
+class ProductDetailsEntity extends Equatable {
   final int id;
   final String name;
   final String description;
-  final String additionalDetails;
+  final String? additionalDetails;
+  final int stock;
   final double sellingPrice;
   final double? discountedPrice;
-  final bool isOnSale;
   final double? salePercent;
-  final int stock;
   final bool isFavorite;
-  final int rating;
-  // final CategoryEntity category;
+  final CategoryEntity category;
   final SellerEntity seller;
   final List<PhotoEntity> photos;
   final List<String> colors;
-  final List<SizeEntity> sizes;
+  final List<SizeEntity> sizes; // Defined as empty in response, but kept for scalability
 
-  const ProductEntity({
+  const ProductDetailsEntity({
     required this.id,
     required this.name,
     required this.description,
     required this.additionalDetails,
+    required this.stock,
     required this.sellingPrice,
     this.discountedPrice,
-    required this.isOnSale,
     this.salePercent,
-    required this.stock,
     required this.isFavorite,
-    required this.rating,
-    // required this.category,
+    required this.category,
     required this.seller,
     required this.photos,
     required this.colors,
@@ -43,67 +39,56 @@ class ProductEntity extends Equatable {
     name,
     description,
     additionalDetails,
+    stock,
     sellingPrice,
     discountedPrice,
-    isOnSale,
     salePercent,
-    stock,
     isFavorite,
-    rating,
-    // category,
+    category,
     seller,
     photos,
     colors,
     sizes,
   ];
 }
+class CategoryEntity extends Equatable {
+  final int id;
+  final String name;
+
+  const CategoryEntity({
+    required this.id,
+    required this.name,
+  });
+
+  @override
+  List<Object?> get props => [id, name];
+}
 
 class SellerEntity extends Equatable {
+  final String id;
   final String name;
   final String email;
   final String photo;
 
   const SellerEntity({
+    required this.id,
     required this.name,
     required this.email,
     required this.photo,
   });
 
-  factory SellerEntity.fromJson(Map<String, dynamic> json) {
-    return SellerEntity(
-      name: json['name'] ?? '',
-      email: json['email'] ?? '',
-      photo: json['photo'] ?? '',
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    'name': name,
-    'email': email,
-    'photo': photo,
-  };
-
   @override
-  List<Object?> get props => [name, email, photo];
+  List<Object?> get props => [id, name, email, photo];
 }
 
 class PhotoEntity extends Equatable {
   final int id;
   final String url;
 
-  const PhotoEntity({required this.id, required this.url});
-
-  factory PhotoEntity.fromJson(Map<String, dynamic> json) {
-    return PhotoEntity(
-      id: json['id'] as int,
-      url: json['url'] ?? '',
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'url': url,
-  };
+  const PhotoEntity({
+    required this.id,
+    required this.url,
+  });
 
   @override
   List<Object?> get props => [id, url];
@@ -113,19 +98,10 @@ class SizeEntity extends Equatable {
   final String name;
   final double extraCost;
 
-  const SizeEntity({required this.name, required this.extraCost});
-
-  factory SizeEntity.fromJson(Map<String, dynamic> json) {
-    return SizeEntity(
-      name: json['name'] ?? '',
-      extraCost: (json['extraCost'] as num?)?.toDouble() ?? 0.0,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    'name': name,
-    'extraCost': extraCost,
-  };
+  const SizeEntity({
+    required this.name,
+    required this.extraCost,
+  });
 
   @override
   List<Object?> get props => [name, extraCost];

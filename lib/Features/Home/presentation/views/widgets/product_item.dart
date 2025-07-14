@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:handora_e_commerce/Features/Home/presentation/views/widgets/product_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 
@@ -20,7 +21,9 @@ class ProductItem extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
 
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(productId: id),));
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
@@ -64,9 +67,16 @@ class ProductItem extends StatelessWidget {
                   Positioned(
                     top: 4.0,
                     right: 4.0,
-                    child:IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.favorite),),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey.shade600, // 🔵 Your custom color
+                      radius: 24, // You can adjust size as needed
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.favorite, color: Colors.red,size: 28,), // Contrast color
+                      ),
+                    ),
                   ),
+
                 ],
               ),
               SizedBox(height: height * 0.01),

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:handora_e_commerce/Features/Home/presentation/views/widgets/category_product_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -15,7 +16,9 @@ class CategoryItem extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryProductScreen(id: id, title: name),));
+      },
       child: Container(
         width: width * 0.32,
         decoration: BoxDecoration(
